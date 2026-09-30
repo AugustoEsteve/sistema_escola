@@ -1,21 +1,24 @@
 <?php
 $arquivo = __DIR__ . "/dados/usuarios.json";
-$usuarios = json_decode(file_get_contents($arquivo), true);
-?>
+$id = $_GET['id']??'';
 
-<h2>Usuarios cadastrados</h2>
+$usuarios = json_decode(
+    file_get_contents($arquivo),
+    true
+);
 
-<?php foreach ($usuarios as $usuario) : ?>
-    <div>
-        <strong><?= htmlspecialchars ($usuario["nome"]) ?></strong>
-        - <?=  htmlspecialchars($usuario["tipo"]) ?>
-        - <?= htmlspecialchars($usuario["email"]) ?>
+$usuarios = array_filter(
+    $usuarios,
+    fn($usuario) => $usuario["id"] !== $id
+);
 
+file_put_contents(
+    $arquivo,
+    json_encode(
+        array_values($usuarios),
+        JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE
+    )
+);
 
-        <a href="excluir.php?id=<?=  urlencode($usuario["id"])?>">
-              Excluir
-
-        </a>
-
-    </div>
-<?php endforeach; ?>
+header("Location: index.php");
+exit;
