@@ -5,15 +5,15 @@ class Funcionario extends Usuario
 {
     private string $cargo;
 
-    public function __construct(string $nome, string $email, string $cargo)
+    public function __construct(string $id, string $nome, string $email, string $cargo)
     {
-        parent::__construct($nome, $email);
+        parent::__construct($id, $nome, $email);
         $this->cargo = $cargo;
     }
 
     public function exibirInfo(): string
     {
-        return "Funcionário: {$this->nome} | Email: {$this->email} | Cargo: {$this->cargo}";
+        return "Email: {$this->email} | Cargo: {$this->cargo}";
     }
 }
 ?>

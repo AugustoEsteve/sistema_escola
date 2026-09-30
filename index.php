@@ -4,27 +4,40 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Escola</title>
-
+    <title>Sistema Escolar</title>
     <style>
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background: red;
+            color: white;
+            text-align: center;
+            padding: 15px 10px;
+            box-sizing: border-box;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
+            font-size: 18px;
+            z-index: 1000;
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 80px;
+        }
         body {
             display: flex;
             justify-content: center;
-            /* Empilha todos os elementos verticalmente */
             align-items: center;
-            /* Centraliza na vertical */
             min-height: 100vh;
-            /* Ocupa toda a altura da tela */
             margin: 0;
             overflow: hidden;
-            /* Evita barras de rolagem enquanto a página gira */
             background-color: #f4f4f9;
-            /* Fundo leve para destacar o cartão */
             background-image: radial-gradient(circle at center,
                     #f30000 1px,
                     transparent 1px);
             background-size: 2rem 2rem;
-            /* Tamanho do fundo radial */
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
         }
 
         main {
@@ -37,15 +50,12 @@
             border-radius: 10px;
             width: 350px;
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-            /* Sombra para dar destaque */
         }
 
         form {
             display: flex;
             flex-direction: column;
-            /* Empilha todos os elementos verticalmente */
             gap: 10px;
-            /* Espaço uniforme entre cada campo */
             width: 100%;
         }
 
@@ -60,7 +70,6 @@
             width: 100%;
             padding: 10px;
             box-sizing: border-box;
-            /* Garante que todos fiquem com a mesma largura */
             border: 1px solid #ccc;
             border-radius: 5px;
         }
@@ -77,10 +86,46 @@
         button:hover {
             background-color: rgb(127, 2, 2);
         }
+
+        /* Rodapé */
+        footer {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background: red;
+            color: white;
+            text-align: center;
+            padding: 15px 10px;
+            box-sizing: border-box;
+            box-shadow: 0 -3px 10px rgba(0, 0, 0, 0.2);
+            font-size: 14px;
+        }
+
+        footer p {
+            margin: 5px 0;
+        }
+
+        footer a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        footer a:hover {
+            color: #ffd6d6;
+            text-decoration: underline;
+        }
     </style>
 </head>
 
 <body>
+    <header>
+        <h1>
+            Sistema Escolar
+        </h1>
+    </header>
     <main>
         <form action="salvar.php" method="post">
             <label for="tipo">Tipo:</label>
@@ -89,6 +134,7 @@
                 <option value="Aluno">Aluno</option>
                 <option value="Professor">Professor</option>
                 <option value="Funcionario">Funcionário</option>
+                <option value="Coordenador">Coordenador</option>
             </select>
 
             <label for="nome">Nome:</label>
@@ -102,11 +148,25 @@
 
             <button type="submit">Cadastrar</button>
         </form>
+
         <form action="exibir.php">
             <button type="submit">Ver tabela</button>
         </form>
-
     </main>
+
+    <footer>
+        <p>
+            © 2026 • DEV's Augusto H., Davhcruz, Victor, Augusto C., Rafael A.,
+            Mário, Adryan, Guilherme G., Gabriel Pietro, CB, Kauã
+        </p>
+
+        <p>
+            <a href="https://github.com/AugustoEsteve/sistema_escola">
+                Contate-nos no GitHub
+            </a>
+        </p>
+    </footer>
+
 </body>
 
 </html>
